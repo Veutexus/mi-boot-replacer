@@ -3,7 +3,7 @@ name: Build Custom Boot Animation Module
 # 1. Fork this repo
 # 2. Choose a device template OR add custom bootanimation.zip files to the 'upload' folder
 # 3. Run this workflow manually
-# 4. Download the ready-to-flash module
+# 4. Download the module
 
 run-name: "Build: ${{ inputs.source == 'template' && format('{0}/{1}', inputs.device, inputs.theme) || 'upload' }} > ${{ inputs.target_location }}"
 
@@ -232,7 +232,7 @@ jobs:
         run: |
           echo "Preparing module structure..."
 
-          # Determine target location (use input or default)
+          # Determine target location
           TARGET_LOCATION="${{ github.event.inputs.target_location }}"
           if [ -z "$TARGET_LOCATION" ]; then
             TARGET_LOCATION="/product/media"
@@ -244,7 +244,6 @@ jobs:
           echo "Module path: $MODULE_TARGET"
 
           # Remove all existing media directories to avoid conflicts
-          # Only keep the one we're targeting
           echo "Cleaning up existing media directories..."
 
           MEDIA_DIRS=(
@@ -256,7 +255,7 @@ jobs:
 
           for dir in "${MEDIA_DIRS[@]}"; do
             if [ -d "$dir" ]; then
-              # Check if this is the target or a parent of the target
+              # Check if this is the target or a parent of it
               TARGET_DIR_FULL="build/module/$MODULE_TARGET"
               if [[ "$TARGET_DIR_FULL" != "$dir"* ]]; then
                 echo "  Removing: $dir"
@@ -296,8 +295,6 @@ jobs:
         id: module_info
         run: |
           PROP_FILE="build/module/module.prop"
-
-          # Use tr -d to remove carriage returns (Windows line endings)
           MODULE_ID=$(grep "^id=" "$PROP_FILE" | cut -d= -f2 | tr -d '\r')
           MODULE_NAME=$(grep "^name=" "$PROP_FILE" | cut -d= -f2 | tr -d '\r')
           MODULE_VERSION=$(grep "^version=" "$PROP_FILE" | cut -d= -f2 | tr -d '\r')
@@ -322,17 +319,16 @@ jobs:
           MODULE_ID="${{ steps.module_info.outputs.module_id }}"
           MODULE_VERSION="${{ steps.module_info.outputs.module_version }}"
 
-          # Create a unique zip name with target location indicator
-          # Remove leading slash and convert remaining slashes to dashes
+          # Create a unique zip name with target location
           TARGET_SHORT=$(echo "${{ env.target_location }}" | sed 's|^/||' | tr '/' '-')
           ZIP_NAME="${MODULE_ID}-${MODULE_VERSION}-${TARGET_SHORT}.zip"
 
-          # Artifact name without .zip (GitHub adds it automatically on download)
+          # Artifact name
           ARTIFACT_NAME="${MODULE_ID}-${MODULE_VERSION}-${TARGET_SHORT}"
 
-          # Create ZIP with stored (no compression) mode for bootanimation compatibility
-          echo "Creating ZIP with stored (no compression) mode..."
-          zip -r -0 "../$ZIP_NAME" . -x "*.git*"
+          # Create ZIP with standard compression
+          echo "Creating module ZIP..."
+          zip -r "../$ZIP_NAME" . -x "*.git*"
 
           # Get zip size
           ZIP_SIZE=$(du -h "../$ZIP_NAME" | cut -f1)
@@ -351,7 +347,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ${{ steps.create_zip.outputs.artifact_name }}
-          path: build/module
+          path: build/${{ steps.create_zip.outputs.zip_name }}
           retention-days: 90
           compression-level: 0
 
