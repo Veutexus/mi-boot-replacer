@@ -1,4 +1,4 @@
-name: Build Custom Boot Animation Module
+name: Build Module
 
 # 1. Fork this repo
 # 2. Choose a device template OR add custom bootanimation.zip files to the 'upload' folder
@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
     inputs:
       source:
-        description: 'Bootanimation source'
+        description: 'Source'
         required: true
         default: 'upload'
         type: choice
@@ -19,14 +19,14 @@ on:
           - 'upload'
           - 'template'
       device:
-        description: 'Device model (only used when source is template)'
+        description: 'Device model (only applies when source is template)'
         required: false
         default: 'liuqin'
         type: choice
         options:
           - 'liuqin'
       theme:
-        description: 'Theme (only used when source is template)'
+        description: 'Theme (only applies when source is template)'
         required: false
         default: 'HyperOS'
         type: choice
@@ -35,7 +35,7 @@ on:
           - 'MIUI'
           - 'MIUI_inverted'
       target_location:
-        description: 'Where to place bootanimation files in the module'
+        description: 'Where to place bootanimation files in the system'
         required: true
         default: '/product/media'
         type: choice
@@ -47,7 +47,7 @@ on:
 jobs:
   build-module:
     runs-on: ubuntu-latest
-    name: Build Boot Animation Module
+    name: Build Module
 
     steps:
       - name: Checkout repository
@@ -395,8 +395,6 @@ jobs:
              - **KernelSU** → Module → Install
              - **APatch** → Module → Install
           4. Reboot your device
-
-          **Note:** Flash the downloaded file directly - no need to extract it first!
 
           ## Notes
 
