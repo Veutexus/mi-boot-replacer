@@ -1,4 +1,4 @@
-name: Build Module
+name: Build Custom Module
 
 # 1. Fork this repo
 # 2. Choose a device template OR add custom bootanimation.zip files to the 'upload' folder

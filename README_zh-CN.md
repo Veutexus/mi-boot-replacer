@@ -240,7 +240,7 @@
 ### 方法一：使用模板
 
 1. **Fork** 此仓库
-2. 前往 **Actions** → **"Build Custom Boot Animation Module"**
+2. 前往 **Actions** → **"Build Custom Module"**
 3. 点击 **"Run workflow"**
 4. 将 **Source** 设置为 `template`
 5. 选择您的**设备型号**（例如 `liuqin`）
@@ -256,7 +256,7 @@
 1. **Fork** 此仓库
 2. 将您的 `bootanimation.zip` 文件添加到 `upload/` 文件夹
 3. 提交并推送您的更改
-4. 前往 **Actions** → **"Build Custom Boot Animation Module"**
+4. 前往 **Actions** → **"Build Custom Module"**
 5. 点击 **"Run workflow"**
 6. 选择 `upload` 作为来源
 7. 选择**目标位置**

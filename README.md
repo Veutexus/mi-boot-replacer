@@ -238,7 +238,7 @@ You can use GitHub Actions to build a custom boot animation module without any l
 ### Method 1: Use a Template
 
 1. **Fork** this repository
-2. Go to **Actions** → **"Build Custom Boot Animation Module"**
+2. Go to **Actions** → **"Build Custom Module"**
 3. Click **"Run workflow"**
 4. Set **Source** to `template`
 5. Select your **Device model** (e.g., `liuqin`)
@@ -254,7 +254,7 @@ You can use GitHub Actions to build a custom boot animation module without any l
 1. **Fork** this repository
 2. Add your `bootanimation.zip` files to the `upload/` folder
 3. Commit and push your changes
-4. Go to **Actions** → **"Build Custom Boot Animation Module"**
+4. Go to **Actions** → **"Build Custom Module"**
 5. Click **"Run workflow"**
 6. Select `upload` as the source
 7. Select the **Target directory**
