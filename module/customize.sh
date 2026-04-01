@@ -233,7 +233,7 @@ elif [ -f "$MODPATH/system_ext/media/bootanimation.zip" ]; then
 fi
 
 if [ -n "$MODULE_BOOT_DIR" ]; then
-  BOOT_DIR="$module_boot_dir"
+  BOOT_DIR="$MODULE_BOOT_DIR"
   ui_print "- Module has a pre-configured path from build"
   ui_print "- Path (from module): $BOOT_DIR"
   ui_print "- Skipping path select user dialog"
