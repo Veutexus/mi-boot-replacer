@@ -323,6 +323,10 @@ p 0 5 part0
 ## Disclaimer
 **A bootloop saver module is strongly advised even if there is little possibility that flashing this module would cause your device to bootloop. I am not responsible for any damages caused to your device or data by using this module. Use at your own risk.**
 
+## Credits
+- [Magisk](https://github.com/topjohnwu/Magisk)
+- [sothx](https://github.com/sothx) - Key selector
+
 ## License
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
