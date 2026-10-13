@@ -18,7 +18,6 @@
 | 设备 | 系统版本 | 状态 | RM |
 |------|----------|:----:|------|
 | liuqin | V14.0.9.0.TMYCNXM | ✅ | Magisk |
-| liuqin | OS2.0.203.0.VMYCNXM | ✅ | Magisk |
 | liuqin | OS2.0.212.0.VMYCNXM | ✅ | Magisk |
 | liuqin | OS3.0.5.0.VMYCNXM | ✅ | Magisk / KSU + 任何元模块 |
 

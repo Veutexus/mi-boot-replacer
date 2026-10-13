@@ -1,4 +1,8 @@
 # Xiaomi Custom Boot Animation
+
+> [!CAUTION]
+> **DISCONTINUED:** This project is no longer maintained.
+
 English | [简体中文](/docs/README_zh-CN.md) | [繁體中文](/docs/README_zh-HK.md)
 
 ## Introduction
@@ -18,7 +22,6 @@ This module utilizes systemless mount to mount the files, ensuring no modificati
 | Device | System Version | Status | RM |
 |--------|----------------|:------:|------|
 | liuqin | V14.0.9.0.TMYCNXM | ✅ | Magisk |
-| liuqin | OS2.0.203.0.VMYCNXM | ✅ | Magisk |
 | liuqin | OS2.0.212.0.VMYCNXM | ✅ | Magisk |
 | liuqin | OS3.0.5.0.VMYCNXM | ✅ | Magisk / KSU + Any metamodule |
 
